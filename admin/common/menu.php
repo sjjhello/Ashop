@@ -42,7 +42,7 @@
 								<a href="./addAdmin.php">增加管理员</a>
 							</dd>
 							<dd>
-								<a href="./editAdmin.php">查看管理员</a>
+								<a href="./listAdmin.php">查看管理员</a>
 							</dd>
 						</dl>
 					</li>

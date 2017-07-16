@@ -19,6 +19,32 @@ function addAdmin(){
     return $mes;
 }
 
+function getAllAdmin(){
+    $sql = "select id,username,email from imooc_admin";
+    $rows = fetchAll($sql);
+    return $rows;
+}
+
+function editAdmin($id){
+    $arr = $_POST;
+    if(update("imooc_admin", $arr,"id={$id}")){
+        $mes = "编辑成功!|<a href='listAdmin.php'>查看管理员列表</a>";
+    }else{
+        $mes = "编辑失败!|<a href='listAdmin.php'>请重新修改</a>";
+    }
+    return $mes;
+}
+
+function delAdmin($id){
+    $arr = $_POST;
+    if(delete("imooc_admin","id={$id}")){
+        $mes = "删除成功!|<a href='listAdmin.php'>查看管理员列表</a>";
+    }else {
+        $mes = "删除失败!|<a href='listAdmin.php'>请重新删除</a>";
+    }
+    return $mes;
+}
+
 function logout(){
     $_SESSION=array();
     if(isset($_COOKIE[session_name()])){

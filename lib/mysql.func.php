@@ -7,7 +7,7 @@ function connet() {
     try {        
         $link = new PDO ( 'mysql:host=localhost;dbname=shopimooc', DB_USER, DB_PWD );
         $link->setAttribute ( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-        $link->exec ( "set names" . DB_CHARSET );
+//         $link->exec ( "set names" . DB_CHARSET );
     } catch ( PDOException $e ) {
         echo '数据库连接失败' . $e->getMessage ();
     }
@@ -20,7 +20,7 @@ function insert($table, $array) {
         $conn = connet ();
         $key = join ( ",", array_keys ( $array ) );
         $vals = "'" . join ( "','", array_values ( $array ) ) . "'";
-        $sql = "insert into {$table} {$key} values ({$vals})";
+        $sql = "insert into {$table} ($key) values ({$vals})";
         $result = $conn->exec ( $sql );
         return $conn->lastInsertId ();
     } catch ( PDOException $e ) {
