@@ -15,6 +15,20 @@
 						</dl>
 					</li>
 					<li>
+					<li>
+						<h3>
+							<span>-</span>分类
+						</h3>
+						<dl>
+							<dd>
+								<a href="addCate.php">添加分类</a>
+							</dd>
+							<dd>
+								<a href="listPro.php">分类列表</a>
+							</dd>
+						</dl>
+					</li>
+					<li>
 						<h3>
 							<span>-</span>订单管理
 						</h3>

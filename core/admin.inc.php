@@ -25,6 +25,25 @@ function getAllAdmin(){
     return $rows;
 }
 
+function getAdminByPage($pageSize=2){
+    $sql = "select * from imooc_admin";
+    $totalRows = getResultNum($sql);
+//     $pageSize = 2;
+    global $totalPage,$page;
+    $totalPage = ceil($totalRows/$pageSize);
+    $page = isset($_REQUEST['page'])?(int)$_REQUEST['page']:1;
+    if($page<1 || $page==null || !is_numeric($page)){
+        $page = 1;
+    }
+    if($page>=$totalPage){
+        $page = $totalPage;
+    }
+    $offset = ($page-1)*$pageSize;
+    $sql = "select id,username,email from imooc_admin limit {$offset},{$pageSize}";
+    $rows =fetchAll($sql);
+    return $rows;
+}
+
 function editAdmin($id){
     $arr = $_POST;
     if(update("imooc_admin", $arr,"id={$id}")){
