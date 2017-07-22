@@ -69,7 +69,7 @@ if(!$rows){
 								<input type="button" value="删除" class="btn" onclick="delAdmin(<?php echo $row['id'];?>)"></td>
 							</tr>
 							<?php endforeach;?>
-							<?php if($rows>$pageSize):?>
+							<?php if($totalRows>$pageSize):?>
 							<tr>
 							 <td colspan="4"><?php echo showPage($page,$totalPage);?></td>
 							</tr>

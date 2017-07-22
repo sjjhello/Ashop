@@ -1,9 +1,9 @@
 <?php
 require_once '../include.php';
-chechLogined();
-$act = $_REQUEST['act'];
-$id = isset($_REQUEST['id']);
-if ($act == "logout") {
+checkLogined();
+@$act = $_REQUEST['act'];
+@$id = $_REQUEST['id'];
+if ($act=="logout") {
     logout();
 } elseif ($act == "addAdmin") {
     $mes = addAdmin();
@@ -13,6 +13,10 @@ if ($act == "logout") {
     $mes = delAdmin($id);
 }elseif ($act == "addCate"){
     $mes = addCate();
+}elseif ($act == "editCate"){
+    $mes = editCate($id);
+}elseif ($act == "delCate"){
+    $mes = delCate($id);
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

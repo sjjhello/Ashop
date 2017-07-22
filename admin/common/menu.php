@@ -21,10 +21,10 @@
 						</h3>
 						<dl>
 							<dd>
-								<a href="addCate.php">添加分类</a>
+								<a href="./addCate.php">添加分类</a>
 							</dd>
 							<dd>
-								<a href="listPro.php">分类列表</a>
+								<a href="./listCate.php">分类列表</a>
 							</dd>
 						</dl>
 					</li>

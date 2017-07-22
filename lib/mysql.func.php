@@ -33,7 +33,7 @@ function update($table, $array, $where = null) {
     try {
         $conn = connet ();
         foreach ( $array as $key => $val ) {
-            if ($str == null) {
+            if (isset($str) == null) {
                 $sep = "";
             } else {
                 $sep = ",";
@@ -42,7 +42,7 @@ function update($table, $array, $where = null) {
         }
         $sql = "update {$table} set {$str}" . ($where == null ? null : " where ". $where);
         $result = $conn->exec ( $sql );
-        if ($result) {
+        if ($result) {//通过判断来排除输入相同名操作
             return $result;
         } else {
             return false;
