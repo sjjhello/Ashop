@@ -19,6 +19,8 @@ function getUniName(){
     return md5(uniqid(microtime(true),true));
 }
 
-function getExt(){
-    return strtolower(end(explode(".","$filename")));
+function getExt($filename){
+    $name = explode(".","$filename");
+    return strtolower(end($name));
+    //因为end函数只接受一个引用，所以尽量让end()里面只有一个值
 }

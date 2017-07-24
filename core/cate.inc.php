@@ -38,6 +38,8 @@ function getCateById($id){
     return fetchOne($sql);
 }
 
-/* function getAllCateByPage($pageSize=2){
-    
-} */
+function getAllCate(){
+    $sql = "select id,cName from imooc_cate";
+    $rows = fetchAll($sql);
+    return $rows;
+} 

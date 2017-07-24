@@ -24,7 +24,7 @@ function uploadFile($fileInfo,$path = "upload",$allowExt=array("gif","jpeg","jpg
         if($imgFlag){
             //如何验证一张图片是否是一个真正的图片类型
             //getimagesize($tmp_name);调用该函数
-            $info= getimagesize($fileInfo['tmp_name']);
+            $info = getimagesize($fileInfo['tmp_name']);
             if(!$info){
                 exit("别玩小把戏");
             }

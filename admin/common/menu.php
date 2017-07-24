@@ -7,17 +7,17 @@
 						</h3>
 						<dl>
 							<dd>
-								<a href="#">商品修改</a>
+								<a href="./addPro.php">添加商品</a>
 							</dd>
 							<dd>
-								<a href="#">商品分类</a>
+								<a href="#">商品列表</a>
 							</dd>
 						</dl>
 					</li>
 					<li>
 					<li>
 						<h3>
-							<span>-</span>分类
+							<span>-</span>分类管理
 						</h3>
 						<dl>
 							<dd>
