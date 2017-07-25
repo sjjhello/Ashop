@@ -38,7 +38,7 @@ function update($table, $array, $where = null) {
             } else {
                 $sep = ",";
             }
-            $str .= $sep . $key . "='" . $val . "'";
+            $str .= $sep.$key."='".$val."'";
         }
         $sql = "update {$table} set {$str}" . ($where == null ? null : " where ". $where);
         $result = $conn->exec ( $sql );

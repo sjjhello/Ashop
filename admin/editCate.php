@@ -31,7 +31,7 @@ $row = getCateById($id);
 								<tr>
 									<td align="right">修改分类</td>
 									<td><input type="text" name="cName"
-										placeholder="<?php echo $row['cName'];?>" /></td>
+										value="<?php echo $row['cName'];?>" /></td>
 								</tr>
 								<tr>
 									<td colspan="2"><input type="submit" value="编辑分类名称" /></td>

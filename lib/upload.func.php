@@ -2,6 +2,9 @@
 require_once '../lib/string.func.php';
 header("content-type:text/html;charset=utf-8");
 function buildInfo(){
+    if($_FILES){
+        return;
+    }
     foreach ($_FILES as $v){
         $i= 0;
         if(is_string($v['name'])){
@@ -29,6 +32,9 @@ function uploadFile($path = "upload",$allowExt=array("gif","jpeg","jpg","png","w
     }
     $i = 0;
     $files = buildInfo();
+    if(!($files && is_array($files))){
+        return;
+    }
     foreach ($files as $file){
         if($file['error'] === UPLOAD_ERR_OK){
             $ext = getExt($file['name']);

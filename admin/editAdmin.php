@@ -31,7 +31,7 @@ $row = fetchOne($sql);
 								<tr>
 									<td align="right">管理员名称</td>
 									<td><input type="text" name="username"
-										placeholder="<?php echo $row['username'];?>" /></td>
+										value="<?php echo $row['username'];?>" /></td>
 								</tr>
 								<tr>
 									<td align="right">管理员密码</td>
@@ -41,7 +41,7 @@ $row = fetchOne($sql);
 								<tr>
 									<td align="right">管理员邮箱</td>
 									<td><input type="text" name="email"
-										placeholder="<?php echo $row['email'];?>" /></td>
+										value="<?php echo $row['email'];?>" /></td>
 								</tr>
 								<tr>
 									<td colspan="2"><input type="submit" value="编辑管理员" /></td>

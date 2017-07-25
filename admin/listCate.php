@@ -1,5 +1,6 @@
 <?php
 require_once '../include.php';
+checkLogined();
 $page = isset($_REQUEST['page'])?(int)$_REQUEST['page']:1;
 $sql = "select * from imooc_cate";
 $totalRows = getResultNum($sql);

@@ -10,7 +10,7 @@
 								<a href="./addPro.php">添加商品</a>
 							</dd>
 							<dd>
-								<a href="#">商品列表</a>
+								<a href="./listPro.php">商品列表</a>
 							</dd>
 						</dl>
 					</li>
