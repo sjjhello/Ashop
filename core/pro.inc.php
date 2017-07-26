@@ -118,6 +118,12 @@ function getAllImgByProId($id)
     return $rows;
 }
 
+function getAllPros(){
+    $sql = "select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName,p.cId from imooc_pro as p join imooc_cate c on p.cId=c.id";
+    $rows = fetchAll($sql);
+    return $rows;
+}
+
 /**
  * 根据id得到商品的详细信息
  * 
@@ -129,4 +135,51 @@ function getProById($id)
     $sql = "select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName,p.cId from imooc_pro as p join imooc_cate c on p.cId=c.id where p.id={$id}";
     $row = fetchOne($sql);
     return $row;
+}
+/**
+ * 检查分类下是否有商品
+ * @param int $cid
+ * @return array
+ */
+function checkProExist($cid){
+    $sql = "select * from imooc_pro where cId={$cid}";
+    $rows = fetchAll($sql);
+    return $rows;
+}
+/**
+ * 删除商品
+ * @param unknown $id
+ * @return string
+ */
+function delPro($id){
+    $arr = $_POST;
+    $res = delete("imooc_pro","id={$id}");
+    $proImgs = getAllImgByProId($id);
+    //删除图片
+    if($proImgs && is_array($proImgs)){
+        foreach ($proImgs as $proImg){
+            if(file_exists("upload/".$proImg['albumPath'])){
+               unlink("upload/".$proImg['albumPath']); 
+            }
+            if(file_exists("../image_50/".$proImg['albumPath'])){
+                unlink("../image_50/".$proImg['albumPath']);
+            }
+            if(file_exists("../image_220/".$proImg['albumPath'])){
+                unlink("../image_220/".$proImg['albumPath']);
+            }
+            if(file_exists("../image_350/".$proImg['albumPath'])){
+                unlink("../image_350/".$proImg['albumPath']);
+            }
+            if(file_exists("../image_800/".$proImg['albumPath'])){
+                unlink("../image_800/".$proImg['albumPath']);
+            } 
+        }
+    }
+    $res1 = delete("imooc_album","pid={$id}");
+    if($res && $res1){
+        $mes = "删除成功!|<a href='listPro.php'>查看分类列表</a>";
+    }else {
+        $mes = "删除失败!|<a href='listPro.php'>请重新删除</a>";
+    }
+    return $mes;
 }

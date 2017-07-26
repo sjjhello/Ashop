@@ -24,13 +24,18 @@ function editCate($id){
 }
 
 function delCate($id){
-    $arr = $_POST;
-    if(delete("imooc_cate","id={$id}")){
-        $mes = "删除成功!|<a href='listCate.php'>查看分类列表</a>";
-    }else {
-        $mes = "删除失败!|<a href='listCate.php'>请重新删除</a>";
+    $res = checkProExist($id);
+    if(!$res){
+      if (delete("imooc_cate", "id={$id}")) {
+            $mes = "删除成功!|<a href='listCate.php'>查看分类列表</a>";
+        } else {
+            $mes = "删除失败!|<a href='listCate.php'>请重新删除</a>";
+        }
+        return $mes;  
+    }else{
+        alertMes("不能删除分类，请先删除该分类下的商品","listPro.php");
     }
-    return $mes;
+    
 }
 
 function getCateById($id){
