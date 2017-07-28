@@ -5,25 +5,28 @@
  * @return array
  */
 function buildInfo(){
-    foreach ($_FILES as $v){
-        $i= 0;
-        if(is_string($v['name'])){
-            //单文件
-            $files[$i] = $v;
-            $i++;
-        }else {
-            //多文件
-            foreach ($v['name'] as $key=>$val){
-                $files[$i]['name'] = $val;
-                $files[$i]['size'] = $v['size'][$key];
-                $files[$i]['tmp_name'] = $v['tmp_name'][$key];
-                $files[$i]['error'] = $v['error'][$key];
-                $files[$i]['type'] = $v['type'][$key];
-                $i++;
-            }
-        }
-    }
-    return $files;
+	if(!$_FILES){
+		return ;
+	}
+	$i=0;
+	foreach($_FILES as $v){
+		//单文件
+		if(is_string($v['name'])){
+			$files[$i]=$v;
+			$i++;
+		}else{
+			//多文件
+			foreach($v['name'] as $key=>$val){
+				$files[$i]['name']=$val;
+				$files[$i]['size']=$v['size'][$key];
+				$files[$i]['tmp_name']=$v['tmp_name'][$key];
+				$files[$i]['error']=$v['error'][$key];
+				$files[$i]['type']=$v['type'][$key];
+				$i++;
+			}
+		}
+	}
+	return $files;
 }
 /**
  * 
@@ -39,9 +42,13 @@ function uploadFile($path = "upload",$allowExt=array("gif","jpeg","jpg","png","w
     }
     $i = 0;
     $files = buildInfo();
+    if(!($files&&is_array($files))){
+        return ;
+    }
     foreach ($files as $file){
         if($file['error'] === UPLOAD_ERR_OK){
             $ext = getExt($file['name']);
+            
             if(!in_array($ext, $allowExt)){
                 exit("非法文件类型");
             }
@@ -61,7 +68,7 @@ function uploadFile($path = "upload",$allowExt=array("gif","jpeg","jpg","png","w
             $destination = $path."/".$filename;
             if(move_uploaded_file($file['tmp_name'], $destination)){
                 $file['name'] = $filename;
-                unset($file['error'],$file['tmp_name'],$file['type'],$file['size']);
+                unset($file['tmp_name'],$file['type'],$file['size']);
                 $uploadedFiles[$i] = $file;
                 $i++;
             }

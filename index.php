@@ -27,7 +27,7 @@ if(!($cates && is_array($cates))){
 				<a href="#" class="collection">收藏慕课</a>
 			</div>
 			<div class="rightArea">
-				欢迎来到慕课网！<a href="#">[登录]</a><a href="#">[免费注册]</a>
+				欢迎来到慕课网！<a href="login.php">[登录]</a><a href="reg.php">[免费注册]</a>
 			</div>
 		</div>
 	</div>

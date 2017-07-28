@@ -41,7 +41,7 @@ function update($table, $array, $where = null) {
             $str .= $sep.$key."='".$val."'";
         }
         $sql = "update {$table} set {$str}" . ($where == null ? null : " where ". $where);
-        $result = $conn->exec ( $sql );
+        $result = $conn->query( $sql );
         if ($result) {//通过判断来排除输入相同名操作
             return $result;
         } else {

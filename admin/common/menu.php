@@ -49,6 +49,19 @@
 					</li>
 					<li>
 					   <h3>
+							<span>-</span>用户管理
+						</h3>
+						<dl>
+							<dd>
+								<a href="./addUser.php">添加用户</a>
+							</dd>
+							<dd>
+								<a href="./listUser.php">用户列表</a>
+							</dd>
+						</dl>
+					</li>
+					<li>
+					   <h3>
 							<span>-</span>管理员设置
 						</h3>
 						<dl>

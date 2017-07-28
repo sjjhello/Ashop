@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>注册</title>
-<link type="text/css" rel="stylesheet" href="style/reset.css">
-<link type="text/css" rel="stylesheet" href="style/main.css">
+<link type="text/css" rel="stylesheet" href="styles/reset.css">
+<link type="text/css" rel="stylesheet" href="styles/main.css">
 <!--[if IE 6]>
 <script type="text/javascript" src="js/DD_belatedPNG_0.0.8a-min.js"></script>
 <script type="text/javascript" src="js/ie6Fixpng.js"></script>
@@ -25,15 +25,22 @@
 
 <div class="regBox">
 	<div class="login_cont">
+	<form method="post" enctype="multipart/from-data" action="doAction.php?act=reg"> 
 		<ul class="login">
-			<li><span class="reg_item"><i>*</i>账户名：</span><div class="input_item"><input type="text" class="login_input user_icon"></div></li>
-			<li><span class="reg_item"><i>*</i>密码：</span><div class="input_item"><input type="password" class="login_input user_icon"></div></li>
-			<li><span class="reg_item"><i>*</i>账户名：</span><div class="input_item"><input type="text" class="login_input user_icon"></div></li>
-			<li><span class="reg_item"><i>*</i>账户名：</span><div class="input_item"><input type="text" class="login_input user_icon"></div></li>
+			<li><span class="reg_item"><i>*</i>用户名：</span><div class="input_item"><input type="text" name="username" placeholder="请输入用户名" class="login_input user_icon"></div></li>
+			<li><span class="reg_item"><i>*</i>密码：</span><div class="input_item"><input type="password" name="password" placeholder="请输入密码" class="login_input user_icon"></div></li>
+			<li><span class="reg_item"><i>*</i>邮箱：</span><div class="input_item"><input type="email" name="email" placeholder="请输入正确邮箱" class="login_input user_icon"></div></li>
+			<li>
+			<span class="reg_item"><i>*</i>性别：</span>
+			<input type="radio" name="sex" value="0" checked="checked">保密
+			<input type="radio" name="sex" value="1">男
+			<input type="radio" name="sex" value="2">女
+			</li>
+			<li><span class="reg_item"><i>*</i>头像：</span><div class="input_item"><input type="file" name="myface"></div></li>
 			<li class="autoLogin"><span class="reg_item">&nbsp;</span><input type="checkbox" id="t1" class="checked"><label for="t1">我同意什么什么条款</label></li>
-			<li><span class="reg_item">&nbsp;</span><input type="button" value="" class="login_btn"></li>
+			<li><span class="reg_item">&nbsp;</span><input type="image" src="images/reg.jpg"></li>
 		</ul>
-		
+	</form>
 	</div>
 </div>
 

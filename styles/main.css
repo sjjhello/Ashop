@@ -362,6 +362,7 @@
 .autoLogin{padding-top:27px; padding-bottom:28px;}
 .checked{position:relative; top:3px; margin-right:3px;}
 .login_btn{width:309px; height:36px; background:url(../images/icon/login_btn.jpg) left top no-repeat;}
+.reg_btn{width:270px; height:35px; background:url(../images/reg.jpg) left top no-repeat;}
 .login_partners{padding-top:34px;}
 .login_list li{float:left; line-height:20px;}
 .login_list span{color:#999; margin:0 2px;}

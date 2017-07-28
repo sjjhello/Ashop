@@ -1,5 +1,11 @@
 <?php 
-
+require_once 'include.php';
+$id = $_REQUEST['id'];
+$proInfo = getProById($id);
+$proImgs = getProImgsById($id);
+if(!($proImgs && is_array($proImgs))){
+    alertMes("商品图片错误", "index.php");
+}
 ?>
 <!doctype html>
 <html>
@@ -8,10 +14,27 @@
 <title>商品介绍</title>
 <link type="text/css" rel="stylesheet" href="./styles/reset.css">
 <link type="text/css" rel="stylesheet" href="./styles/main.css">
+<link type="text/css" rel="stylesheet" media="all" href="./styles/jquery.jqzoom.css"/>
+<script src="./scripts/jquery-1.6.js" type="text/javascript"></script>
+<script src="./scripts/jquery.jqzoom-core.js" type="text/javascript"></script>
 <!--[if IE 6]>
 <script type="text/javascript" src="js/DD_belatedPNG_0.0.8a-min.js"></script>
 <script type="text/javascript" src="js/ie6Fixpng.js"></script>
 <![endif]-->
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.jqzoom').jqzoom({
+            zoomType: 'standard',
+            lens:true,
+            preloadImages: false,
+            alwaysOn:false,
+			title:false,
+			zoomWidth:410,
+			zoomHeight:410
+        });
+	
+});
+</script>
 </head>
 
 <body class="grey">
@@ -67,85 +90,41 @@
 						<dd><a href="#">荣耀3X</a> <a href="#">单反</a> <a href="#">智能设备</a></dd>
 					</dl>
 				</div>
-				<div class="shopClass_list hide">
-					<div class="shopClass_cont">
-						<dl class="shopList_item">
-							<dt>电脑装机</dt>
-							<dd>
-								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a>
-							</dd>
-						</dl>
-						<dl class="shopList_item">
-							<dt>电脑装机</dt>
-							<dd>
-								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a>
-							</dd>
-						</dl>
-						<dl class="shopList_item">
-							<dt>电脑装机</dt>
-							<dd>
-								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a>
-							</dd>
-						</dl>
-						<dl class="shopList_item">
-							<dt>电脑装机</dt>
-							<dd>
-								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a>
-							</dd>
-						</dl>
-						<dl class="shopList_item">
-							<dt>电脑装机</dt>
-							<dd>
-								<a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a><a href="#">文字字啊</a><a href="#">文字字字啊</a><a href="#">文字啊</a><a href="#">文字</a><a href="#">文字啊</a><a href="#">文字啊</a>
-							</dd>
-						</dl>
-						<div class="shopList_links">
-							<a href="#">文字测试内容等等<span></span></a><a href="#">文字容等等<span></span></a>
-						</div>
-					</div>
-				</div>
+				
 			</div>
-			<ul class="nav fl">
-				<li><a href="#" class="active">数码城</a></li>
-				<li><a href="#">天黑黑</a></li>
-				<li><a href="#">团购</a></li>
-				<li><a href="#">发现</a></li>
-				<li><a href="#">二手特卖</a></li>
-				<li><a href="#">名品会</a></li>
-			</ul>
+			
 		</div>
 	</div>
 </div>
 <div class="userPosition comWidth">
 	<strong><a href="#">首页</a></strong>
 	<span>&nbsp;&gt;&nbsp;</span>
-	<a href="#">平板电脑</a>
+	<a href="#"><?php echo $proInfo['cName'];?></a>
 	<span>&nbsp;&gt;&nbsp;</span>
-	<em>MD531CH/A</em>
+	<em><?php echo $proInfo['pSn'];?></em>
 </div>
 <div class="description_info comWidth">
 	<div class="description clearfix">
 		<div class="leftArea">
 			<div class="description_imgs">
 				<div class="big">
-					<img src="images/des_big.jpg" alt="">
+					<a href="image_800/<?php echo  $proImgs[0]['albumPath'];?>" class="jqzoom" rel='gal1'  title="triumph" >
+           			 <img width="309" height="340" src="image_350/<?php  echo $proImgs[0]['albumPath'];?>"  title="triumph">
+	        		</a>
 				</div>
-				<ul class="des_smimg clearfix">
-					<li><a href="#"><img src="images/des_sm.jpg" class="active" alt=""></a></li>
-					<li><a href="#"><img src="images/des_sm2.jpg" alt=""></a></li>
-					<li><a href="#"><img src="images/des_sm.jpg" alt=""></a></li>
-					<li><a href="#"><img src="images/des_sm2.jpg" alt=""></a></li>
-					<li><a href="#"><img src="images/des_sm.jpg" alt=""></a></li>
+				<ul class="des_smimg clearfix" id="thumblist" >
+					<?php foreach($proImgs as $key=>$proImg):?>
+					<li><a class="<?php echo $key==0?"zoomThumbActive":"";?> active" href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: 'image_350/<?php echo $proImg['albumPath'];?>',largeimage: 'image_800/<?php echo $proImg['albumPath'];?>'}"><img src="image_50/<?php echo $proImg['albumPath'];?>" alt=""></a></li>
+					<?php endforeach;?>
 				</ul>
 			</div>
 		</div>
 		<div class="rightArea">
 			<div class="des_content">
-				<h3 class="des_content_tit">全网底价 Apple 苹果 iPad mini 16G wifi版 平板电脑 前白后银 MD531CH/A 银白两色生
-产批次不同混合发货</h3>
+				<h3 class="des_content_tit"><?php echo $proInfo['pName'];?></h3>
 				<div class="dl clearfix">
 					<div class="dt">慕课价</div>
-					<div class="dd clearfix"><span class="des_money"><em>￥</em>999.00</span></div>
+					<div class="dd clearfix"><span class="des_money"><em>￥</em><?php echo $proInfo['iPrice'];?></span></div>
 				</div>
 				<div class="dl clearfix">
 					<div class="dt">优惠</div>
@@ -242,166 +221,7 @@
 	</div>
 </div>
 <div class="hr_15"></div>
-<div class="des_info comWidth clearfix">
-	<div class="leftArea">
-		<div class="recommend">
-			<h3 class="tit">同价位</h3>
-			<div class="item">
-				<div class="item_cont">
-					<div class="img_item">
-						<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-					</div>
-					<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
-					<p class="money">￥888</p>
-				</div>
-			</div>
-			<div class="item">
-				<div class="item_cont">
-					<div class="img_item">
-						<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-					</div>
-					<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
-					<p class="money">￥888</p>
-				</div>
-			</div>
-			<div class="item">
-				<div class="item_cont">
-					<div class="img_item">
-						<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-					</div>
-					<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
-					<p class="money">￥888</p>
-				</div>
-			</div>
-		</div>
-		<div class="hr_15"></div>
-		<div class="recommend">
-			<h3 class="tit">同价位</h3>
-			<div class="item">
-				<div class="item_cont">
-					<div class="img_item">
-						<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-					</div>
-					<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
-					<p class="money">￥888</p>
-				</div>
-			</div>
-			<div class="item">
-				<div class="item_cont">
-					<div class="img_item">
-						<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-					</div>
-					<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
-					<p class="money">￥888</p>
-				</div>
-			</div>
-			<div class="item">
-				<div class="item_cont">
-					<div class="img_item">
-						<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-					</div>
-					<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
-					<p class="money">￥888</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="rightArea">
-		<div class="des_infoContent">
-			<ul class="des_tit">
-				<li class="active"><span>产品介绍</span></li>
-				<li><span>产品评价(12312)</span></li>
-			</ul>
-			<div class="ad">
-				<a href="#"><img src="images/ad.jpg"></a>
-			</div>
-			<div class="info_text">
-				<div class="info_tit">
-					<h3>强烈推荐</h3><h4>货比三家，还选</h4>
-				</div>
-				<p>现在就是买mini的好时候！换代清仓直降，但苹果品质不变！A5双核，内置Lightning闪电接口，正反可插，方便人性。小身材，炫丽的7.9英寸显示屏，7.2mm的厚度，薄如铅笔。女生包包随身携带更时尚！facetime视频通话，与密友24小时畅聊不断线。微信倾力打造，你的智能助理。苹果的牌子就不用我说了，1111补仓，存货不多哦！</p>
-				<div class="hr_45"></div>
-				<div class="info_tit">
-					<h3>强烈推荐</h3><h4>货比三家，还选</h4>
-				</div>
-				<p>现在就是买mini的好时候！换代清仓直降，但苹果品质不变！A5双核，内置Lightning闪电接口，正反可插，方便人性。小身材，炫丽的7.9英寸显示屏，7.2mm的厚度，薄如铅笔。女生包包随身携带更时尚！facetime视频通话，与密友24小时畅聊不断线。微信倾力打造，你的智能助理。苹果的牌子就不用我说了，1111补仓，存货不多哦！</p>
-				<div class="hr_45"></div>
-				<img src="images/pad.jpg" class="center">
-				<div class="hr_45"></div>
-			</div>
-		</div>
-		<div class="hr_15"></div>
-		<div class="des_infoContent">
-			<h3 class="shopDes_tit">商品评价</h3>
-			<div class="score_box clearfix">
-				<div class="score">
-					<span>4.7</span><em>分</em>
-				</div>
-				<div class="score_speed">
-					<ul class="score_speed_text">
-						<li class="speed_01">非常不满意</li>
-						<li class="speed_02">不满意</li>
-						<li class="speed_03">一般</li>
-						<li class="speed_04">满意</li>
-						<li>非常满意</li>
-					</ul>
-					<div class="score_num">
-						4.7<i></i>
-					</div>
-					<p>共18939位慕课网友参与评分</p>
-				</div>
-			</div>
-			<div class="review_tab">
-				<ul class="review fl">
-					<li><a href="#" class="active">全部</a></li>
-					<li><a href="#">满意（3121）</a></li>
-					<li><a href="#">一般（321）</a></li>
-					<li><a href="#">不满意（1121）</a></li>
-				</ul>
-				<div class="review_sort fr">
-					<a href="#" class="review_time">时间排序</a><a href="#" class="review_reco">推荐排序</a>
-				</div>
-			</div>
-			<div class="review_listBox">
-				<div class="review_list clearfix">
-					<div class="review_userHead fl">
-						<div class="review_user">
-							<img src="images/userhead.jpg" alt="">
-							<p>61***42</p>
-							<p>金色会员</p>
-						</div>
-					</div>
-					<div class="review_cont">
-						<div class="review_t clearfix">
-							<div class="starsBox fl"><span class="stars"></span><span class="stars"></span><span class="stars"></span><span class="stars"></span><span class="stars"></span></div>
-							<span class="stars_text fl">5分 满意</span>
-						</div>
-						<p>赖慕课挺不错的信赖慕课挺不错的，信赖慕课</p>
-						<p><a href="#" class="ding">顶(0)</a><a href="#" class="cai">踩(0)</a></p>
-					</div>
-				</div>
-				<div class="review_list clearfix">
-					<div class="review_userHead fl">
-						<div class="review_user">
-							<img src="images/userhead.jpg" alt="">
-							<p>61***42</p>
-							<p>金色会员</p>
-						</div>
-					</div>
-					<div class="review_cont">
-						<div class="review_t clearfix">
-							<div class="starsBox fl"><span class="stars"></span><span class="stars"></span><span class="stars"></span><span class="stars"></span><span class="stars"></span></div>
-							<span class="stars_text fl">5分 满意</span>
-						</div>
-						<p>赖慕课挺不错的信赖慕课挺不错的，信赖慕课</p>
-						<p><a href="#" class="ding">顶(0)</a><a href="#" class="cai">踩(0)</a></p>
-					</div>
-				</div>
-				<div class="hr_25"></div>
-			</div>
-		</div>
-	</div>
-</div>
+
 <div class="hr_25"></div>
 <div class="footer">
 	<p><a href="#">慕课简介</a><i>|</i><a href="#">慕课公告</a><i>|</i> <a href="#">招纳贤士</a><i>|</i><a href="#">联系我们</a><i>|</i>客服热线：400-675-1234</p>

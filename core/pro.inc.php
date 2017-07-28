@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 添加商品
  * @return string
