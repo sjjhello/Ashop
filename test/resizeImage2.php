@@ -11,7 +11,7 @@ function thumb($filename,$destination=null,$dst_w=null,$dst_h=null,$isReservedSo
         $dst_h = ceil($src_h*$scale);
     }
     $mime = image_type_to_mime_type($imagetype);
-    $createFun = str_replace("/", "createFrom", $mime);
+    $createFun = str_replace("/", "createfrom", $mime);
     $outFun = str_replace("/", null, $mime);
     $src_image = $createFun($filename);
     $dst_image = imagecreatetruecolor($dst_w, $dst_h);

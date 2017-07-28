@@ -195,7 +195,7 @@ $rows = fetchAll($sql);
 		  </div>
 	</div>
 	<!--左侧列表-->
-	<script>
+	<script type="text/javascript">
 function showDetail(id,t){
 	$("#showDetail"+id).dialog({
 		  height:"auto",

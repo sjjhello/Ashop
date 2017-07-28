@@ -23,7 +23,7 @@ function buildInfo(){
     return $files;
 }
 
-function uploadFile($path = "upload",$allowExt=array("gif","jpeg","jpg","png","wbmp"),$maxSize = 1048576,$imgFlag = true){
+function uploadFile($path = "./upload",$allowExt=array("gif","jpeg","jpg","png","wbmp"),$maxSize = 1048576,$imgFlag = true){
     if(!file_exists($path)){
         mkdir($path,0777,true);
     }

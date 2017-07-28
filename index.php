@@ -1,7 +1,8 @@
 <?php 
 require_once 'include.php';
-$pros = getAllPros();
-if($pros && is_array($pros)){
+$cates = getAllCate();
+//print_r($pros);
+if(!($cates && is_array($cates))){
     alertMes("不好意思，网站维护中！！","#");
 }
 ?>
@@ -131,9 +132,9 @@ if($pros && is_array($pros)){
 		</div>
 	</div>
 </div>
-<?php foreach ($pros as $pro)?>
+<?php foreach ($cates as $cate):?>
 <div class="shopTit comWidth">
-	<span class="icon"></span><h3><?php echo $pro['cName']?></h3>
+	<span class="icon"></span><h3><?php echo $cate['cName']?></h3>
 	<a href="#" class="more">更多&gt;&gt;</a>
 </div>
 <div class="shopList comWidth clearfix">
@@ -150,72 +151,45 @@ if($pros && is_array($pros)){
 	</div>
 	<div class="rightArea">
 		<div class="shopList_top clearfix">
+		<?php 
+		  $pros = getProsByCid($cate['id']);
+		  if($pros & is_array($pros)):
+		  foreach ($pros as $pro):
+		  $proImg = getProImgById($pro['id']);
+		?>
 			<div class="shop_item">
 				<div class="shop_img">
-					<a href="#"><img src="images/shopImg.jpg" alt=""></a>
+					<a href="proDetails.php?id=<?php echo $pro['id'];?>" target="_blank"><img height="200" width="187" src="image_220/<?php echo $proImg['albumPath'];?>" alt=""></a>
 				</div>
-				<h3>HTC新渴望8系列</h3>
-				<p>1899元</p>
+				<h6><?php echo $pro['pName'];?></h6>
+				<p><?php echo $pro['iPrice'];?>元</p>
 			</div>
-			<div class="shop_item">
-				<div class="shop_img">
-					<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-				</div>
-				<h3>HTC新渴望8系列</h3>
-				<p>1899元</p>
-			</div>
-			<div class="shop_item">
-				<div class="shop_img">
-					<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-				</div>
-				<h3>HTC新渴望8系列</h3>
-				<p>1899元</p>
-			</div>
-			<div class="shop_item">
-				<div class="shop_img">
-					<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-				</div>
-				<h3>HTC新渴望8系列</h3>
-				<p>1899元</p>
-			</div>
+			<?php
+			 endforeach; 
+			 endif;
+			?>
 		</div>
+		
 		<div class="shopList_sm clearfix">
+    		<?php
+        		$prosSmall=getSmallProsByCid($cate['id']);
+    			if($prosSmall &&is_array($prosSmall)):
+    			foreach($prosSmall as $proSmall):
+    			$proSmallImg=getProImgById($proSmall['id']);
+    		?>
 			<div class="shopItem_sm">
 				<div class="shopItem_smImg">
-					<a href="#"><img src="images/shopImg.jpg" alt=""></a>
+					<a href="proDetails.php?id=<?php echo $proSmall['id'];?>" target="_blank"><img width="95" height="95" src="image_220/<?php echo $proSmallImg['albumPath'];?>" alt=""></a>
 				</div>
 				<div class="shopItem_text">
-					<p>NFC技术一碰轻松配对！接触屏幕</p>
-					<h3>￥149.00	</h3>
+					<p><?php echo $proSmall['pName'];?></p>
+					<h3>￥<?php echo $proSmall['iPrice'];?>	</h3>
 				</div>
 			</div>
-			<div class="shopItem_sm">
-				<div class="shopItem_smImg">
-					<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-				</div>
-				<div class="shopItem_text">
-					<p>NFC技术一碰轻松配对！接触屏幕</p>
-					<h3>￥149.00	</h3>
-				</div>
-			</div>
-			<div class="shopItem_sm">
-				<div class="shopItem_smImg">
-					<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-				</div>
-				<div class="shopItem_text">
-					<p>NFC技术一碰轻松配对！接触屏幕</p>
-					<h3>￥149.00	</h3>
-				</div>
-			</div>
-			<div class="shopItem_sm">
-				<div class="shopItem_smImg">
-					<a href="#"><img src="images/shopImg.jpg" alt=""></a>
-				</div>
-				<div class="shopItem_text">
-					<p>NFC技术一碰轻松配对！接触屏幕</p>
-					<h3>￥149.00	</h3>
-				</div>
-			</div>
+			<?php
+		endforeach;
+		endif;
+		?>
 		</div>
 	</div>
 </div>

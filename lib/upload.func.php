@@ -1,9 +1,10 @@
-<?php
-header("content-type:text/html;charset=utf-8");
+<?php 
+
+/**
+ * 构建上传文件信息
+ * @return array
+ */
 function buildInfo(){
-    if($_FILES){
-        return;
-    }
     foreach ($_FILES as $v){
         $i= 0;
         if(is_string($v['name'])){
@@ -24,16 +25,20 @@ function buildInfo(){
     }
     return $files;
 }
-
+/**
+ * 
+ * @param string $path
+ * @param unknown $allowExt
+ * @param number $maxSize
+ * @param string $imgFlag
+ * @return string
+ */
 function uploadFile($path = "upload",$allowExt=array("gif","jpeg","jpg","png","wbmp"),$maxSize = 1048576,$imgFlag = true){
     if(!file_exists($path)){
         mkdir($path,0777,true);
     }
     $i = 0;
     $files = buildInfo();
-    if(!($files && is_array($files))){
-        return;
-    }
     foreach ($files as $file){
         if($file['error'] === UPLOAD_ERR_OK){
             $ext = getExt($file['name']);
