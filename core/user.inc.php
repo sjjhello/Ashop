@@ -22,3 +22,19 @@ function reg(){
     }
     return $mes;
 }
+
+function checkUser($sql){
+    return fetchOne($sql);
+}
+
+function checkUserLogin(){
+        if($_SESSION['userId']==""){
+            alertMes("请先登陆", "login.php");
+        }
+}
+
+function layout(){
+    $_SESSION=array();
+    session_destroy();
+    alertMes("退出成功", "login.php");
+}

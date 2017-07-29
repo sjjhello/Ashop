@@ -23,3 +23,31 @@ function getProImgsByid($id){
     $rows = fetchAll($sql);
     return $rows;
 }
+/**
+ * 文字水印
+ * @param unknown $id
+ * @return string
+ */
+function dowaterText($id){
+    $rows = getProImgsByid($id);
+    foreach ($rows as $row){
+        $filename = "../image_800/".$row['albumPath'];
+        waterText($filename);
+    }
+    $mes="操作成功!|<a href='listProImages.php'>返回列表</a>";
+    return $mes;
+}
+/**
+ * 图片水印
+ * @param unknown $id
+ * @return string
+ */
+function dowaterPic($id){
+    $rows=getProImgsById($id);
+    foreach($rows as $row){
+        $filename="../image_800/".$row['albumPath'];
+        waterPic($filename);
+    }
+    $mes="操作成功!|<a href='listProImages.php'>返回列表</a>";
+    return $mes;
+}

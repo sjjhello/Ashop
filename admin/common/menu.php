@@ -73,5 +73,15 @@
 							</dd>
 						</dl>
 					</li>
+					<li>
+						<h3>
+							<span>-</span>商品图片管理
+						</h3>
+						<dl>
+							<dd>
+								<a href="./listProImages.php">商品图片列表</a>
+							</dd>
+						</dl>
+					</li>
 				</ul>
 			</div>

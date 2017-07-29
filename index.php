@@ -1,5 +1,6 @@
 <?php 
 require_once 'include.php';
+checkUserLogin();
 $cates = getAllCate();
 //print_r($pros);
 if(!($cates && is_array($cates))){
@@ -27,7 +28,13 @@ if(!($cates && is_array($cates))){
 				<a href="#" class="collection">收藏慕课</a>
 			</div>
 			<div class="rightArea">
-				欢迎来到慕课网！<a href="login.php">[登录]</a><a href="reg.php">[免费注册]</a>
+				欢迎来到慕课网！<?php if(isset($_SESSION['userName'])){
+				    echo 'Welcome!'.$_SESSION['userName'];
+				    echo '<a href="doAction.php?act=layout">[退出]</a>';
+				}else{
+				    echo '<a href="login.php">[登录]</a>|<a href="reg.php">[免费注册]</a>';
+				}
+				?>
 			</div>
 		</div>
 	</div>
